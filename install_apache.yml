@@ -1,0 +1,19 @@
+---
+- name: Install Apache on CentOS
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update repository index
+      yum:
+        update_cache: yes
+
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: Add PHP support for Apache
+      yum:
+        name: php
+        state: present
